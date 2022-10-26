@@ -1,36 +1,30 @@
-import io.restassured.response.Response;
-import org.testng.annotations.Test;
+package repeat;
 
-import static io.restassured.RestAssured.*;
+import io.restassured.response.Response;
+import org.junit.Test;
+
+import static io.restassured.RestAssured.given;
 
 public class Get01 {
     /*
-    1) Postman, manuel API testleri icin kullandik.
-    2) otomasyon testleri icin de Rest Assured Library kullanacagiz
-    3) Otomasyon testleri yaparken asagidaki adimlari izliyoruz;
-        a) gereksinimleri iyi anlamak
-        b) Test caselerimizi yaziyoyoruz
-            i) Test Case yazinminda "Gherkin" dilini kullanacagiz. Bizler yazilim diline hakim olsakda, karsimizdaki
-            kisiler hakim olmayabilir ama Gherkin ile yazilan testleri anlamak ta zorluk cekmemeyeceklerdir.
-            Ghrkin dilinde kullanacagimiz keywordler;
-
-            - Given : On kusullar
-            - When : Yapilacak aksiyonlar icin (get(), put(), post(), patch() ve delete() )
-            - Then : Itsek yaptiktan (request gondertikten sonra) dogrulama
-            - And : Coklu islemlerde kullanacagiz
-
-         c) Test kodlarimizi yazmaya baslayacagiz.
-
-            i) Set the URL,
-            ii) set the expected Data (beklenen datanin olusturulmasi, Post, Put, Patch)
-            iii) Type code to send request (Talep gondermek icin kod yazimi)
-            iv) Do Assertion (dogrulama yapmak)
-     */
-
-
+    Given
+    https://restful-booker.herokuapp.com/booking/1
+    When
+    User send a GET Request to the url
+    Then
+    HTTP Status code should be 404
+    And
+    Status Line should be HTTP/1.1 404 Not Found
+    And
+    Response body contains "Not Found"
+    And
+    Response body does not contain "TechProEd"
+    And
+    Server is "Cowboy"
+      */
     @Test
     public void  get01(){
-        /*
+           /*
     Given
         https://restful-booker.herokuapp.com/booking/101
     When
@@ -50,8 +44,9 @@ public class Get01 {
         // Bizden post, put, patch istemedigi icin bu case de kullanamayacagiz
 
         //iii) Type code to send request (Talep gondermek icin kod yazimi)
-       Response response= given().when().get(url);
-       response.prettyPrint();
+
+        Response response= given().when().get(url); // response cevap yanit demek
+        response.prettyPrint();
 
         // iv) Do Assertion (dogrulama yapmak)
         response.then().assertThat().statusCode(200).contentType("application/json").statusLine("HTTP/1.1 200 OK");
@@ -68,7 +63,6 @@ public class Get01 {
         System.out.println(" Headers : "+response.getHeaders());
         // Time konsla yazdiralim
         System.out.println(" Time : "+response.getTime());
-
 
     }
 }
