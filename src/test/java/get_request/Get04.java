@@ -45,7 +45,11 @@ public class Get04 extends JsonplaceholderBaseUrl {
                 contentType(ContentType.JSON).
                 body("id",hasSize(200),"title",hasItem("quis eius est sint explicabo"),
                 "userId",hasItems(2,7,9));
-
-
+        // butun dogrulamalari tek bir body icinde yaparsak soft assert olur.
+        // butun adimlar icin farkli bodyler icinde sorgulama yapiyorsak bu hart assorter.
+        /*
+        Soft assert testi gerçekleştirir ve assert başarısız olursa hata fırlatma gerçekleştirmez.
+        Hard assert anında hata fırlatır, sonrasında test işlemine devam eder
+        */
     }
 }
