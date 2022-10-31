@@ -3,14 +3,13 @@ package get_request;
 import base_url.JsonplaceholderBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import static io.restassured.RestAssured.*;
 import static org.junit.Assert.*;
 
 public class Get08 extends JsonplaceholderBaseUrl {
+
     /*
     De-Serialization : Json datayi Java objesine cevirme
     Serialization : Java objesini Json formatina cevirme.
@@ -72,4 +71,5 @@ public class Get08 extends JsonplaceholderBaseUrl {
         assertEquals(200, response.statusCode());
 
     }
+
 }
