@@ -1,4 +1,4 @@
-package get_request;
+package get_requests;
 
 import base_url.RestfulBaseUrl;
 import io.restassured.response.Response;
@@ -37,6 +37,8 @@ public class Get05 extends RestfulBaseUrl {
         // iv) Do Assertion (dogrulama yapmak)
         assertEquals(200, response.getStatusCode());
         assertTrue(response.asString().contains("bookingid"));
+
+        // hasSize() kac olup olmadigini saymak icin bu methodu kullaniyoruz
 
     }
 }
